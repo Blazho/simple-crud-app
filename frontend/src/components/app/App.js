@@ -13,7 +13,7 @@ class App extends Component{
   render() {
     return(
         <div>
-          <Category categories = {this.state.categories}/>
+          <Category categories = {this.state.categories} onDelete={this.deleteCategory}/>
         </div>
     )
   }
@@ -24,6 +24,12 @@ class App extends Component{
             categories: data.data
           })
         })
+  }
+  deleteCategory = (id) => {
+      crudRepository.deleteCategory(id)
+          .then(() => {
+              this.loadCategories();
+          } )
   }
   componentDidMount() {
     this.loadCategories();

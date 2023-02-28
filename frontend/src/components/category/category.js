@@ -1,4 +1,5 @@
 import React from "react";
+import CategoryItem from "./categoryItem/categoryItem";
 
 const category = (props) =>{
     return(
@@ -13,13 +14,7 @@ const category = (props) =>{
                 </thead>
                 <tbody>
                 {props.categories.map((item) => {
-                    return (
-                        <tr>
-                            <td>{item.id}</td>
-                            <td>{item.name}</td>
-                            <td>{item.description}</td>
-                        </tr>
-                    )
+                    return ( <CategoryItem onDelete={props.onDelete} category={item}/>)
                 })}
                 </tbody>
             </table>
